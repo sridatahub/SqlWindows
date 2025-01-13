@@ -12,11 +12,15 @@ ORDER BY: Specifies the order of rows within each subset.
 
 We'll be working with a table named "sales1" that stores information about each sale, including:
 
-Product Name: The name of the item sold.
-Category: The type of product (e.g., electronics, clothing).
-Customer ID: A unique identifier for the customer who made the purchase.
-Sale Date: The date when the sale occurred.
-Amount: The total price of the sale.
+**Table Schema**
+
+The `sales1` table has the following columns:
+
+* **Product Name:** The name of the item sold.
+* **Category:** The type of product (e.g., "Electronics," "Clothing").
+* **Customer ID:** A unique identifier for each customer.
+* **Sale Date:** The date when the sale occurred.
+* **Amount:** The total price of the sale.
 ```sql 
     CREATE TABLE sales1(
     sale_id INT PRIMARY KEY,
