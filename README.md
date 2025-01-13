@@ -2,6 +2,11 @@ SQL Window Functions on Sales Dataset
 
 This project explores how to use powerful SQL features called "window functions" to analyze sales data.
 
+Key Features:
+OVER clause: Defines the "window" of rows for calculations.
+PARTITION BY: Divides data into subsets for separate calculations.
+ORDER BY: Specifies the order of rows within each subset.
+
 We'll be working with a table named "sales1" that stores information about each sale, including:
 
 Product Name: The name of the item sold.
@@ -56,6 +61,7 @@ select
 from sales1;
 ```
 4. Identify Previous and Next Sale Amounts:
+   
 This query finds the sales amount of the very next sale that happened in a specific product category after a particular sale.
 It helps you see the sequence of sales amounts within a product category.
 ```sql
@@ -110,6 +116,7 @@ select sale_id,
 from sales1;
 ```
 8. Calculate the Difference from Average Amount:
+   
 It helps you understand how much each sale's amount is above or below the typical sales amount for its category.
 ```sql
 select 
@@ -119,6 +126,7 @@ select
 from sales1;
 ```
 9. NTILE for Dividing Sales into Quartiles:
+    
 This helps you understand the distribution of sales amounts across the entire dataset. You can see which sales fall into the lower, middle, and upper ranges of sales amounts.
 ```sql
 select 
@@ -128,7 +136,8 @@ select
     ntile(4) over(order by amount desc) as quartile
 from sales1;
 ```
-10. Compute First and Last Sale in Each Category
+10. Compute First and Last Sale in Each Category:
+    
 It helps you see the range of sales amounts that have occurred within each category over time.
 ```sql
 SELECT
