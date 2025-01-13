@@ -21,6 +21,7 @@ The `sales1` table has the following columns:
 * **Customer ID :** A unique identifier for each customer.
 * **Sale Date   :** The date when the sale occurred.
 * **Amount      :** The total price of the sale.
+ **Table Creation**
 ```sql 
     CREATE TABLE sales1(
     sale_id INT PRIMARY KEY,
