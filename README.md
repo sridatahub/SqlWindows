@@ -114,14 +114,15 @@ from sales1;
 
 10. Compute First and Last Sale in Each Category
 Finds the first and last sale amount for each category based on sale dates.
-
-select
+```sql
+SELECT
     category,
     sale_date,
     amount,
-    first_value(amount) over(partition by category order by sale_date) as first_sale,
-    last_value(amount) over(partition by category order by sale_date rows between unbounded preceding and unbounded following) as last_sale
-from sales1;
+    FIRST_VALUE(amount) OVER (PARTITION BY category ORDER BY sale_date) AS first_sale,
+    LAST_VALUE(amount) OVER (PARTITION BY category ORDER BY sale_date ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING) AS last_sale
+FROM sales1;
+```
 
 💬 Contact
 Author: Chavala Srikanth
