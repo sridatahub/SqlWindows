@@ -61,7 +61,7 @@ from sales1;
    
 This query calculates how much each customer has spent with the company up to a certain point.
 It tracks the total spending for each customer after every purchase they make.
-```
+```sql
 select
     sale_id,
     customer_id,
@@ -160,7 +160,9 @@ FROM sales1;
 
 💬 Contact
 Author: Chavala Srikanth
+
 Email: srikanthchavala2424@gmail.com
+
 GitHub: sridatahub
 
 
