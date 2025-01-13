@@ -3,8 +3,11 @@ SQL Window Functions on Sales Dataset
 This project explores how to use powerful SQL features called "window functions" to analyze sales data.
 
 Key Features:
+
 OVER clause: Defines the "window" of rows for calculations.
+
 PARTITION BY: Divides data into subsets for separate calculations.
+
 ORDER BY: Specifies the order of rows within each subset.
 
 We'll be working with a table named "sales1" that stores information about each sale, including:
