@@ -1,8 +1,14 @@
-SQL Windows Functions on Sales Dataset
-📚 Overview
-This project demonstrates the application of advanced SQL window functions on a sample sales dataset. The dataset, stored in the sales1 table, includes sales data with details like product name, category, customer ID, sale date, and amount. These functions enable efficient data analysis, ranking, cumulative calculations, and more.
-🛠️ Table Schema
-The sales1 table is created using the following structure:
+SQL Window Functions on Sales Dataset
+
+This project explores how to use powerful SQL features called "window functions" to analyze sales data.
+
+We'll be working with a table named "sales1" that stores information about each sale, including:
+
+Product Name: The name of the item sold.
+Category: The type of product (e.g., electronics, clothing).
+Customer ID: A unique identifier for the customer who made the purchase.
+Sale Date: The date when the sale occurred.
+Amount: The total price of the sale.
 ```sql 
     CREATE TABLE sales1(
     sale_id INT PRIMARY KEY,
@@ -14,17 +20,21 @@ The sales1 table is created using the following structure:
 );
 ```
 ⚙️ SQL Window Functions Applied
-1. Rank Products by Sales Amount
-Ranks products within each category based on their sales amount in descending order.
-```select 
+1. Rank Products by Sales Amount:
+   
+Imagine you have different shelves in a store, each holding a different type of product (like "Electronics," "Clothing," etc.). This query figures out which product on each shelf sold the most, second-most, and so on.
+```sql
+select 
     product_name,
     category,
     amount,
     rank() over(partition by category order by amount desc) as rank_as_Category
 from sales1;
-2. Assign a Row Number to Each Sale
-Assigns a sequential row number to each sale within its category, ordered by the sale date.
+```
+2. Assign a Row Number to Each Sale:
 
+Imagine you have a list of sales for each product category (like "Electronics," "Clothing," etc.). This query assigns a unique number to each sale within each category based on the order in which they happened.
+```sql
 select 
     sale_id,
     product_name,
@@ -33,8 +43,10 @@ select
 from sales1;
 ```
 
-3. Calculate Running Total of Sales
-Calculates the cumulative sales total for each customer, ordered by the sales amount.
+3. Calculate Running Total of Sales:
+   
+This query calculates how much each customer has spent with the company up to a certain point.
+It tracks the total spending for each customer after every purchase they make.
 ```
 select
     sale_id,
@@ -43,9 +55,10 @@ select
     sum(amount) over(partition by customer_id order by amount desc) as running_total
 from sales1;
 ```
-4. Identify Previous and Next Sale Amounts
-Finds the next sale amount for a given category and sale ID.
-```
+4. Identify Previous and Next Sale Amounts:
+This query finds the sales amount of the very next sale that happened in a specific product category after a particular sale.
+It helps you see the sequence of sales amounts within a product category.
+```sql
 select 
     s1.category,
     s1.sale_id,
@@ -60,9 +73,10 @@ select
     ) as next_amount
 from sales1 s1;
 ```
-5. Compute Cumulative Average Sales
-Calculates the cumulative average sales amount for each category over time.
-```
+5. Compute Cumulative Average Sales:
+   
+It shows how the average sales amount for each category changes as more sales happen over time.
+```sql
 select 
     sale_date,
     category,
@@ -71,9 +85,10 @@ select
 from sales1;
 ```
 
-6. Find Top N Sales in Each Category
-Extracts the top 3 sales for each category based on the sales amount.
-```
+6. Find Top N Sales in Each Category:
+   
+This helps identify the best-selling products within each category, which can be valuable for marketing, inventory management, and product planning.
+```sql
 with ranked_sale as(
     select product_name,category,amount,
         row_number() over(partition by category order by amount desc) as ranking 
@@ -84,27 +99,28 @@ from ranked_sale
 where ranking<=3;
 ```
 
-7. Percent Rank of Sales
-Calculates the percentile rank of each sale amount within its category.
-```
+7. Percent Rank of Sales:
+   
+It helps you understand how a specific sale compares to the overall sales performance of other products within the same category.
+```sql
 select sale_id,
     category,
     amount,
     percent_rank() over(partition by category order by amount desc) as perc_rank
 from sales1;
 ```
-8. Calculate the Difference from Average Amount
-Finds the difference between each sale's amount and the average amount in its category.
-```
+8. Calculate the Difference from Average Amount:
+It helps you understand how much each sale's amount is above or below the typical sales amount for its category.
+```sql
 select 
     sale_id,product_name,amount,
     round((avg(amount) over(partition by category)),2) as avg_amount,
     round((amount-avg(amount) over(partition by category)),2) as diff_from_avg
 from sales1;
 ```
-9. NTILE for Dividing Sales into Quartiles
-Divides sales amounts into four quartiles.
-```
+9. NTILE for Dividing Sales into Quartiles:
+This helps you understand the distribution of sales amounts across the entire dataset. You can see which sales fall into the lower, middle, and upper ranges of sales amounts.
+```sql
 select 
     sale_id,
     product_name,
@@ -113,7 +129,7 @@ select
 from sales1;
 ```
 10. Compute First and Last Sale in Each Category
-Finds the first and last sale amount for each category based on sale dates.
+It helps you see the range of sales amounts that have occurred within each category over time.
 ```sql
 SELECT
     category,
