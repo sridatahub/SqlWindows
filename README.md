@@ -3,7 +3,8 @@ SQL Windows Functions on Sales Dataset
 This project demonstrates the application of advanced SQL window functions on a sample sales dataset. The dataset, stored in the sales1 table, includes sales data with details like product name, category, customer ID, sale date, and amount. These functions enable efficient data analysis, ranking, cumulative calculations, and more.
 🛠️ Table Schema
 The sales1 table is created using the following structure:
-CREATE TABLE sales1(
+'''sql 
+    CREATE TABLE sales1(
     sale_id INT PRIMARY KEY,
     product_name VARCHAR(50),
     category VARCHAR(50),
@@ -11,6 +12,7 @@ CREATE TABLE sales1(
     sale_date DATE,
     amount DECIMAL(10, 2)
 );
+'''
 ⚙️ SQL Window Functions Applied
 1. Rank Products by Sales Amount
 Ranks products within each category based on their sales amount in descending order.
