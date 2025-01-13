@@ -159,11 +159,11 @@ FROM sales1;
 ```
 
 💬 Contact
-Author: Chavala Srikanth
+Author : Chavala Srikanth
 
-Email: srikanthchavala2424@gmail.com
+Email  : srikanthchavala2424@gmail.com
 
-GitHub: sridatahub
+GitHub : sridatahub
 
 
 
