@@ -4,11 +4,11 @@ This project explores how to use powerful SQL features called "window functions"
 
 **Key Features:**
 
-***OVER clause:** Defines the "window" of rows for calculations.
+* **OVER clause:** Defines the "window" of rows for calculations.
 
-***PARTITION BY:** Divides data into subsets for separate calculations.
+* **PARTITION BY:** Divides data into subsets for separate calculations.
 
-***ORDER BY:** Specifies the order of rows within each subset.
+* **ORDER BY:** Specifies the order of rows within each subset.
 
 We'll be working with a table named "sales1" that stores information about each sale, including:
 
